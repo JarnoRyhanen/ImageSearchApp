@@ -12,7 +12,7 @@ interface UnsplashApi {
         const val BASE_URL = "https://api.unsplash.com/"
     }
 
-    @Headers("Accept-Version: v1", "Authorization: Client_ID $CLIENT_ID")
+    @Headers("Accept-Version: v2", "Authorization: Client-ID $CLIENT_ID")
     @GET("search/photos")
     suspend fun searchPhotos(
         @Query("query") query: String,

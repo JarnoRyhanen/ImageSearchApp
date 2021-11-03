@@ -1,5 +1,6 @@
 package com.home.imagesearchapp.ui.gallery
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
@@ -9,8 +10,7 @@ import com.home.imagesearchapp.data.UnsplashRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
-@HiltViewModel
-class GalleryViewModel @Inject constructor(
+class GalleryViewModel @ViewModelInject constructor(
     private val repository: UnsplashRepository
 ) : ViewModel() {
 
