@@ -20,5 +20,5 @@ interface UnsplashApi {
         @Query("per_page") perPage: String
     ): UnsplashResponse
 
-    
+
 }
