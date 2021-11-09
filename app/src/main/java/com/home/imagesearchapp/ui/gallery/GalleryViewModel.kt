@@ -7,11 +7,9 @@ import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import com.home.imagesearchapp.data.UnsplashRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 
 class GalleryViewModel @ViewModelInject constructor(
-    private val repository: UnsplashRepository
+    private val repository: UnsplashRepository,
 ) : ViewModel() {
 
     private val currentQuery = MutableLiveData(DEFAULT_QUERY)

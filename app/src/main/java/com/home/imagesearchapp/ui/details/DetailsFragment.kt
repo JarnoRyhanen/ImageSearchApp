@@ -64,7 +64,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             val intent = Intent(Intent.ACTION_VIEW, uri)
 
             textViewCreator.apply {
-                text = "Photo by${photo.user.name} on Unsplash"
+                text = "Photo by ${photo.user.name} on Unsplash"
                 setOnClickListener {
                     context.startActivity(intent)
                 }
