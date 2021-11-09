@@ -11,7 +11,7 @@ import com.home.imagesearchapp.R
 import com.home.imagesearchapp.data.UnsplashPhotoObject
 import com.home.imagesearchapp.databinding.RecyclerViewItemUnsplashPhotoBinding
 
-class UnsplashPhotoAdapter :
+class UnsplashPhotoAdapter(private val listener: OnItemClickListener) :
     PagingDataAdapter<UnsplashPhotoObject, UnsplashPhotoAdapter.PhotoViewHolder>(PHOTO_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
@@ -31,8 +31,20 @@ class UnsplashPhotoAdapter :
         }
     }
 
-    class PhotoViewHolder(private val binding: RecyclerViewItemUnsplashPhotoBinding) :
+    inner class PhotoViewHolder(private val binding: RecyclerViewItemUnsplashPhotoBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.root.setOnClickListener {
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val item = getItem(position)
+                    if (item != null) {
+                        listener.onItemClick(item)
+                    }
+                }
+            }
+        }
 
         fun bind(photo: UnsplashPhotoObject) {
             binding.apply {
@@ -46,6 +58,10 @@ class UnsplashPhotoAdapter :
                 recyclerViewTextViewUserName.text = photo.user.username
             }
         }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(photo: UnsplashPhotoObject)
     }
 
     companion object {
